@@ -535,7 +535,7 @@ var PruneClusterForLeaflet = (L.Layer ? L.Layer : L.Class).extend({
         this._map = map;
         map.on('movestart', this._moveStart, this);
         map.on('moveend', this._moveEnd, this);
-        map.on('zoomend', this._zoomStart, this);
+        map.on('zoomstart', this._zoomStart, this);
         map.on('zoomend', this._zoomEnd, this);
         this.ProcessView();
         map.addLayer(this.spiderfier);
@@ -543,7 +543,7 @@ var PruneClusterForLeaflet = (L.Layer ? L.Layer : L.Class).extend({
     onRemove: function (map) {
         map.off('movestart', this._moveStart, this);
         map.off('moveend', this._moveEnd, this);
-        map.off('zoomend', this._zoomStart, this);
+        map.off('zoomstart', this._zoomStart, this);
         map.off('zoomend', this._zoomEnd, this);
         for (var i = 0, l = this._objectsOnMap.length; i < l; ++i) {
             map.removeLayer(this._objectsOnMap[i].data._leafletMarker);
